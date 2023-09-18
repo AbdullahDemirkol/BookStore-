@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebAPI.Common;
 
 namespace WebAPI.DataAccess
 {
@@ -24,7 +25,7 @@ namespace WebAPI.DataAccess
                 {
                     //Id = 1,
                     Title = "Lean Startup",
-                    GenreId = "1",
+                    GenreId = GenreEnum.ScienceFiction,
                     PageCount = 200,
                     PublishDate = new DateTime(2001, 06, 12)
                 },
@@ -32,7 +33,7 @@ namespace WebAPI.DataAccess
                 {
                     //Id = 2,
                     Title = "Herland",
-                    GenreId = "2",
+                    GenreId = GenreEnum.PersonalGrowth,
                     PageCount = 250,
                     PublishDate = new DateTime(2010, 05, 23)
                 },
@@ -40,7 +41,7 @@ namespace WebAPI.DataAccess
                 {
                     //Id = 3,
                     Title = "Dune",
-                    GenreId = "2",
+                    GenreId = GenreEnum.Noval,
                     PageCount = 540,
                     PublishDate = new DateTime(2006, 12, 21)
                 } 
