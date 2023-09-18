@@ -1,4 +1,5 @@
-﻿using WebAPI.BookOperations.Command.RequestCommandModel;
+﻿using AutoMapper;
+using WebAPI.BookOperations.Command.RequestCommandModel;
 using WebAPI.Common;
 using WebAPI.DataAccess;
 
@@ -8,10 +9,12 @@ namespace WebAPI.BookOperations.Command.CommandHandler
     {
         public CreateBookModel Model { get; set; }
         private readonly BookStoreDbContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public CreateBookCommand(BookStoreDbContext dbContext)
+        public CreateBookCommand(BookStoreDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
         public void Handle()
         {
@@ -24,11 +27,12 @@ namespace WebAPI.BookOperations.Command.CommandHandler
             {
                 throw new InvalidOperationException("Bu tür bulunamadı.");
             }
-            book = new Book();
-            book.Title = Model.Title;
-            book.PublishDate = Model.PublishDate;
-            book.PageCount = Model.PageCount;
-            book.GenreId = (GenreEnum)Model.GenreId;
+            //book = new Book();
+            book = _mapper.Map<Book>(Model);
+            //book.Title = Model.Title;
+            //book.PublishDate = Model.PublishDate;
+            //book.PageCount = Model.PageCount;
+            //book.GenreId = (GenreEnum)Model.GenreId;
             _dbContext.Books.Add(book);
             _dbContext.SaveChanges();
 

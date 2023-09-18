@@ -1,4 +1,5 @@
-﻿using WebAPI.BookOperations.Command.RequestCommandModel;
+﻿using AutoMapper;
+using WebAPI.BookOperations.Command.RequestCommandModel;
 using WebAPI.Common;
 using WebAPI.DataAccess;
 
@@ -9,7 +10,6 @@ namespace WebAPI.BookOperations.Command.CommandHandler
         public UpdateBookModel Model { get; set; }
         public int Id { get; set; }
         private readonly BookStoreDbContext _dbContext;
-
         public UpdateBookCommand(BookStoreDbContext dbContext)
         {
             _dbContext = dbContext;
