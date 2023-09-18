@@ -22,7 +22,7 @@ namespace WebAPI.DataAccess
             var books= new List<Book>(){
                 new Book()
                 {
-                    Id = 1,
+                    //Id = 1,
                     Title = "Lean Startup",
                     GenreId = "1",
                     PageCount = 200,
@@ -30,7 +30,7 @@ namespace WebAPI.DataAccess
                 },
                 new Book()
                 {
-                    Id = 2,
+                    //Id = 2,
                     Title = "Herland",
                     GenreId = "2",
                     PageCount = 250,
@@ -38,7 +38,7 @@ namespace WebAPI.DataAccess
                 },
                 new Book()
                 {
-                    Id = 3,
+                    //Id = 3,
                     Title = "Dune",
                     GenreId = "2",
                     PageCount = 540,
