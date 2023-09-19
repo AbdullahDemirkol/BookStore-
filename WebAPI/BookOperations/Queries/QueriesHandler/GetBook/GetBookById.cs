@@ -6,7 +6,7 @@ namespace WebAPI.BookOperations.Queries.QueriesHandler.GetBook
 {
     public class GetBookById
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         private readonly BookStoreDbContext _dbContext;
         private readonly IMapper _mapper;
 
@@ -18,7 +18,7 @@ namespace WebAPI.BookOperations.Queries.QueriesHandler.GetBook
         }
         public BookViewModel Handle()
         {
-            var book = _dbContext.Books.FirstOrDefault(p => p.Id == Convert.ToInt16(Id));
+            var book = _dbContext.Books.FirstOrDefault(p => p.Id == Id);
             if (book == null)
             {
                 throw new InvalidOperationException("Kitap Bulunamadı.");
