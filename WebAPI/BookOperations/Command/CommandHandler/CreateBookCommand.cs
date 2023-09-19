@@ -22,11 +22,11 @@ namespace WebAPI.BookOperations.Command.CommandHandler
             var book = _dbContext.Books.FirstOrDefault(p => p.Title == Model.Title);
             if (book is not null || Model is null)
             {
-                throw new InvalidOperationException("Kitap zaten mevcut.");
+                throw new InvalidOperationException("Kitap zaten mevcut");
             }
             if (!Enum.IsDefined(typeof(GenreEnum), Model.GenreId))
             {
-                throw new InvalidOperationException("Bu tür bulunamadı.");
+                throw new InvalidOperationException("Böyle bir kitap türü bulunamadı");
             }
             //book = new Book();
             book = _mapper.Map<Book>(Model);

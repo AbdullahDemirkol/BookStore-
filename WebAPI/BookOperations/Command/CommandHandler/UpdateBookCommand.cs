@@ -18,11 +18,11 @@ namespace WebAPI.BookOperations.Command.CommandHandler
             var book = _dbContext.Books.FirstOrDefault(p => p.Id == Id);
             if (book is null)
             {
-                throw new InvalidOperationException("Kitap mevcut değil.");
+                throw new InvalidOperationException("Kitap mevcut değil");
             }
             if (!Enum.IsDefined(typeof(GenreEnum), Model.GenreId))
             {
-                throw new InvalidOperationException("Bu tür bulunamadı.");
+                throw new InvalidOperationException("Böyle bir kitap türü bulunamadı");
             }
 
             book.GenreId = Model.GenreId != default ? (GenreEnum)Model.GenreId : book.GenreId;

@@ -21,7 +21,7 @@ namespace WebAPI.BookOperations.Queries.QueriesHandler.GetBook
             var book = _dbContext.Books.FirstOrDefault(p => p.Id == Id);
             if (book == null)
             {
-                throw new InvalidOperationException("Kitap Bulunamadı.");
+                throw new InvalidOperationException("Kitap Bulunamadı");
             }
             BookViewModel viewModel = _mapper.Map<BookViewModel>(book);
             return viewModel;

@@ -16,7 +16,7 @@ namespace WebAPI.BookOperations.Command.CommandHandler
             var book = _dbContext.Books.FirstOrDefault(p => p.Id == Id);
             if (book is null)
             {
-                throw new InvalidOperationException("Kitap mevcut değil.");
+                throw new InvalidOperationException("Kitap mevcut değil");
             }
             _dbContext.Books.Remove(book);
             _dbContext.SaveChanges();
