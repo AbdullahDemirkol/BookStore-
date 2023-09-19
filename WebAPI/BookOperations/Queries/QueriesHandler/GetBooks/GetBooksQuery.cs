@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using WebAPI.BookOperations.Queries.QueriesViewModel;
-using WebAPI.Common;
 using WebAPI.DataAccess;
 
 namespace WebAPI.BookOperations.Queries.QueriesHandler.GetBooks

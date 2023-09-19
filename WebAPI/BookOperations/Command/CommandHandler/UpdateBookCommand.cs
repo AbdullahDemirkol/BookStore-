@@ -1,7 +1,6 @@
-﻿using AutoMapper;
-using WebAPI.BookOperations.Command.RequestCommandModel;
-using WebAPI.Common;
+﻿using WebAPI.BookOperations.Command.RequestCommandModel;
 using WebAPI.DataAccess;
+using WebAPI.Entity.Enum;
 
 namespace WebAPI.BookOperations.Command.CommandHandler
 {

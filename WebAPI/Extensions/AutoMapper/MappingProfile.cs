@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using WebAPI.BookOperations.Command.RequestCommandModel;
 using WebAPI.BookOperations.Queries.QueriesViewModel;
-using WebAPI.Common;
+using WebAPI.Entity.Concrete;
 
 namespace WebAPI.Extensions.AutoMapper
 {

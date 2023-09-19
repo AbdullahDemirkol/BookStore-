@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebAPI.Common;
+using WebAPI.Entity.Concrete;
+using WebAPI.Entity.Enum;
 
 namespace WebAPI.DataAccess
 {

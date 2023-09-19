@@ -1,6 +1,4 @@
-﻿using WebAPI.Common;
-
-namespace WebAPI.BookOperations.Command.RequestCommandModel
+﻿namespace WebAPI.BookOperations.Command.RequestCommandModel
 {
     public class CreateBookModel
     {

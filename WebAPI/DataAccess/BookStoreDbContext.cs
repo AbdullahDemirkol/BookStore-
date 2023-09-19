@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebAPI.Entity.Concrete;
 
 namespace WebAPI.DataAccess
 {
