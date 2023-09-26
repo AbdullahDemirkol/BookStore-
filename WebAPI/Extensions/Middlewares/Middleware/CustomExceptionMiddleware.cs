@@ -3,46 +3,36 @@ using System.IO;
 using System.Diagnostics;
 using System.Net;
 using Newtonsoft.Json;
+using WebAPI.Services.Logger.Interface;
+using static System.Net.WebRequestMethods;
 
 namespace WebAPI.Extensions.Middlewares.Middleware
 {
     public class CustomExceptionMiddleware
     {
-        private readonly string _logFilePath;
         private readonly RequestDelegate _next;
+        private readonly ILoggerService _loggerService;
 
-        public CustomExceptionMiddleware(RequestDelegate next)
+        public CustomExceptionMiddleware(RequestDelegate next, ILoggerService loggerService)
         {
             _next = next;
-            _logFilePath = Environment.CurrentDirectory + "\\log.txt";
-            if (!File.Exists(_logFilePath))
-            {
-                using (StreamWriter writer = File.CreateText(_logFilePath))
-                {
-                    writer.WriteLine("Log Dosyası Oluşturuldu: " + DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")+"\n");
-
-                }
-            }
+            _loggerService = loggerService;
         }
         public async Task Invoke(HttpContext context)
         {
             var watch = Stopwatch.StartNew();
             try
             {
-                string message = "[Request] HTTP " + context.Request.Method + @" """ + context.Request.Path + @"""";
-                using (StreamWriter writer = new StreamWriter(_logFilePath, true))
-                {
-                    writer.WriteLine($"{DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss --- ")} {message}");
-                }
+                string message = @$"[Request] HTTP {context.Request.Method} ""{context.Request.Path}""";
+                _loggerService.Write(message);
 
                 await _next(context);
-                watch.Stop();
-                message = "[Response] HTTP " + context.Request.Method + @" """ + context.Request.Path + @""" responded. StatusCode: " + context.Response.StatusCode + " " + (HttpStatusCode)context.Response.StatusCode + "." ;
-                message +=" Time: "+ watch.Elapsed.TotalSeconds + "ms.";
-                using (StreamWriter writer = new StreamWriter(_logFilePath, true))
-                {
-                    writer.WriteLine($"{DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss --- ")} {message}");
-                }
+                watch.Stop(); 
+                message = @$"[Response] HTTP {context.Request.Method} ""{context.Request.Path}"" responded. " +
+                    $"StatusCode: {context.Response.StatusCode} {(HttpStatusCode)context.Response.StatusCode}. " +
+                    $"Time: {watch.Elapsed.TotalSeconds}ms.";
+
+                _loggerService.Write(message);
             }
             catch (Exception ex)
             {
@@ -56,17 +46,11 @@ namespace WebAPI.Extensions.Middlewares.Middleware
         {
             var exceptionType = ex.GetType().Name;
             FixResponse(context, exceptionType);
-
-            var message = "[Error] HTTP " + context.Request.Method + @" """ + context.Request.Path + @""" -";
-            message += " StatusCode: " + context.Response.StatusCode +" "+ (HttpStatusCode)context.Response.StatusCode + ". ";
-            message += "Error Message: " + ex.Message + ". ";
-            message += " Time: " + watch.Elapsed.TotalSeconds + "ms.";
-            using (StreamWriter writer = new StreamWriter(_logFilePath, true))
-            {
-                writer.WriteLine($"{DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss --- ")} {message}");
-            }
-
-
+            string message = @$"[Error] HTTP {context.Request.Method} ""{context.Request.Path}"" - " +
+                $"StatusCode: {context.Response.StatusCode} {(HttpStatusCode)context.Response.StatusCode}. " +
+                $"Error Message: {ex.Message}. " +
+                $"Time: {watch.Elapsed.TotalSeconds}ms.";
+            _loggerService.Write(message);
 
             var result = JsonConvert.SerializeObject(new { error = ex.Message }, Formatting.None);
             return context.Response.WriteAsync(result);
