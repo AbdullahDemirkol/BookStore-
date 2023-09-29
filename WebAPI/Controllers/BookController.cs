@@ -2,13 +2,13 @@
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.BookOperations.Command.CommandHandler;
-using WebAPI.BookOperations.Command.RequestCommandModel;
-using WebAPI.BookOperations.Command.Validator;
-using WebAPI.BookOperations.Queries.QueriesHandler.GetBook;
-using WebAPI.BookOperations.Queries.QueriesHandler.GetBooks;
-using WebAPI.BookOperations.Queries.QueriesViewModel;
-using WebAPI.BookOperations.Queries.Validator;
+using WebAPI.Application.BookOperations.Commands.CommandHandler;
+using WebAPI.Application.BookOperations.Commands.RequestCommandModel;
+using WebAPI.Application.BookOperations.Commands.Validator;
+using WebAPI.Application.BookOperations.Queries.QueryHandler.GetBook;
+using WebAPI.Application.BookOperations.Queries.QueryHandler.GetBooks;
+using WebAPI.Application.BookOperations.Queries.QueryViewModel;
+using WebAPI.Application.BookOperations.Queries.Validator;
 using WebAPI.DataAccess;
 
 namespace WebAPI.Controllers
@@ -37,10 +37,10 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetBookById(int id)
         {
-            GetBookById query = new GetBookById(_dbContext,_mapper);
+            GetBookByIdQuery query = new GetBookByIdQuery(_dbContext,_mapper);
             BookViewModel result;
             query.Id = id;
-            GetBookByIdValidator validator = new GetBookByIdValidator();
+            GetBookByIdQueryValidator validator = new GetBookByIdQueryValidator();
             validator.ValidateAndThrow(query);
             result = query.Handle();
             return Ok(result);

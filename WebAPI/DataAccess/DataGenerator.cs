@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebAPI.Entity.Concrete;
-using WebAPI.Entity.Enum;
 
 namespace WebAPI.DataAccess
 {
@@ -14,9 +13,34 @@ namespace WebAPI.DataAccess
                 {
                     return;
                 }
+                context.Genres.AddRange(GetGenres());
                 context.Books.AddRange(GetBooks());
                 context.SaveChanges();
             }
+        }
+
+        private static List<Genre> GetGenres()
+        {
+            var genres = new List<Genre>()
+            {
+                new Genre()
+                {
+                    Name="Personal Growth"
+                },
+                new Genre()
+                {
+                    Name="Science Fiction"
+                },
+                new Genre()
+                {
+                    Name="Noval"
+                },
+                new Genre()
+                {
+                    Name="Romance"
+                }
+            };
+            return genres;
         }
 
         private static List<Book> GetBooks()
@@ -26,7 +50,7 @@ namespace WebAPI.DataAccess
                 {
                     //Id = 1,
                     Title = "Lean Startup",
-                    GenreId = GenreEnum.ScienceFiction,
+                    GenreId = 1,
                     PageCount = 200,
                     PublishDate = new DateTime(2001, 06, 12)
                 },
@@ -34,7 +58,7 @@ namespace WebAPI.DataAccess
                 {
                     //Id = 2,
                     Title = "Herland",
-                    GenreId = GenreEnum.PersonalGrowth,
+                    GenreId = 2,
                     PageCount = 250,
                     PublishDate = new DateTime(2010, 05, 23)
                 },
@@ -42,7 +66,7 @@ namespace WebAPI.DataAccess
                 {
                     //Id = 3,
                     Title = "Dune",
-                    GenreId = GenreEnum.Noval,
+                    GenreId = 3,
                     PageCount = 540,
                     PublishDate = new DateTime(2006, 12, 21)
                 } 
