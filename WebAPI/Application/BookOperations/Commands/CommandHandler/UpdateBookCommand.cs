@@ -23,6 +23,10 @@ namespace WebAPI.Application.BookOperations.Commands.CommandHandler
             {
                 throw new InvalidOperationException("Böyle bir kitap türü bulunamadı");
             }
+            if (!_dbContext.Authors.Any(p => p.Id == Model.AuthorId))
+            {
+                throw new InvalidOperationException("Böyle bir yazar bulunamadı");
+            }
 
             book.GenreId = Model.GenreId != default ? Model.GenreId : book.GenreId;
             book.PageCount = Model.PageCount != default ? Model.PageCount : book.PageCount;

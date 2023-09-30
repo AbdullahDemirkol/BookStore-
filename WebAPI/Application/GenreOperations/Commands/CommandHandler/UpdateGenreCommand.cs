@@ -20,7 +20,8 @@ namespace WebAPI.Application.GenreOperations.Commands.CommandHandler
             {
                 throw new InvalidOperationException("Kitap Türü Bulunamadı");
             }
-            bool isFoundGenre = _dbContext.Genres.Any(g => g.Name.ToLower() == Model.Name.ToLower() && g.Id!=GenreId);
+            bool isFoundGenre = _dbContext.Genres.Any(g => g.Name.ToLower().Replace(" ","") == Model.Name.ToLower().Replace(" ", "") 
+                && g.Id!=GenreId);
             if (isFoundGenre)
             {
                 throw new InvalidOperationException("Bu Isimde Tür Bulunmaktadır");

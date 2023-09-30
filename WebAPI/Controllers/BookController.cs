@@ -38,11 +38,12 @@ namespace WebAPI.Controllers
         public IActionResult GetBookById(int id)
         {
             GetBookByIdQuery query = new GetBookByIdQuery(_dbContext,_mapper);
-            BookViewModel result;
             query.Id = id;
+
             GetBookByIdQueryValidator validator = new GetBookByIdQueryValidator();
             validator.ValidateAndThrow(query);
-            result = query.Handle();
+
+            BookViewModel result = query.Handle();
             return Ok(result);
         }
 
@@ -61,8 +62,10 @@ namespace WebAPI.Controllers
         {
             CreateBookCommand command = new CreateBookCommand(_dbContext,_mapper);
             command.Model = newBook;
+
             CreateBookCommandValidator validator = new CreateBookCommandValidator();
             validator.ValidateAndThrow(command);
+
             command.Handle();
             return Ok();
         }

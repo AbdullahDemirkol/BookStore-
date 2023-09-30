@@ -19,7 +19,7 @@ namespace WebAPI.Application.GenreOperations.Commands.CommandHandler
         }
         public void Handle()
         {
-            var genre = _dbContext.Genres.FirstOrDefault(g=>g.Name==Model.Name);
+            var genre = _dbContext.Genres.FirstOrDefault(g=>g.Name.ToLower().Replace(" ", "") ==Model.Name.ToLower().Replace(" ", ""));
             if (genre is not null)
             {
                 throw new InvalidOperationException("Kitap Türü Zaten Mevcut");

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using WebAPI.Application.AuthorOperations.Commands.RequestCommandModel;
+using WebAPI.Application.AuthorOperations.Queries.QueryViewModel;
 using WebAPI.Application.BookOperations.Commands.RequestCommandModel;
 using WebAPI.Application.BookOperations.Queries.QueryViewModel;
 using WebAPI.Application.GenreOperations.Commands.RequestCommandModel;
@@ -11,10 +13,13 @@ namespace WebAPI.Extensions.AutoMapper
     {
         public MappingProfile()
         {
-            CreateMap<Book, BookViewModel>().ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name));
+            CreateMap<Book, BookViewModel>().ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name))
+                .ForMember(destinationMember: dest=>dest.Author,memberOptions: opt=>opt.MapFrom(mapExpression: src=>src.Author.Name+" "+src.Author.Surname));
             CreateMap<CreateBookModel, Book>();
             CreateMap<Genre, GenreViewModel>();
             CreateMap<CreateGenreModel, Genre>();
+            CreateMap<Author, AuthorViewModel>().ForMember(dest=>dest.FullName,opt=>opt.MapFrom(src=>src.Name+" "+src.Surname));
+            CreateMap<CreateAuthorModel, Author>();
         }
     }
 }

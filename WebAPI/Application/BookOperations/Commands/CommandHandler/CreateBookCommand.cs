@@ -18,14 +18,19 @@ namespace WebAPI.Application.BookOperations.Commands.CommandHandler
         }
         public void Handle()
         {
-            var book = _dbContext.Books.FirstOrDefault(p => p.Title == Model.Title);
-            if (book is not null || Model is null)
+            var book = _dbContext.Books.FirstOrDefault(p => p.Title.ToLower().Replace(" ", "") == Model.Title.ToLower().Replace(" ", "") 
+                && DateTime.Equals(p.PublishDate,Model.PublishDate));
+            if (book is not null)
             {
                 throw new InvalidOperationException("Kitap zaten mevcut");
             }
             if (!_dbContext.Genres.Any(p => p.Id == Model.GenreId && p.IsActive == true))
             {
                 throw new InvalidOperationException("Böyle bir kitap türü bulunamadı");
+            }
+            if (!_dbContext.Authors.Any(p=>p.Id==Model.AuthorId))
+            {
+                throw new InvalidOperationException("Böyle bir yazar bulunamadı");
             }
             book = _mapper.Map<Book>(Model);
             //book = new Book();
