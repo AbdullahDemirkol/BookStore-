@@ -21,6 +21,9 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddSingleton<ILoggerService, TextFileLogger> ();
 
+builder.Services.AddScoped<IBookStoreDbContext>(provider => provider.GetService<BookStoreDbContext>());
+//builder.Services.AddScoped<IBookStoreDbContext, BookStoreDbContext>();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
