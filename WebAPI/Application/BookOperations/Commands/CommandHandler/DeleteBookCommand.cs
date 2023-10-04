@@ -12,7 +12,7 @@ namespace WebAPI.Application.BookOperations.Commands.CommandHandler
             _dbContext = dbContext;
         }
         public void Handle()
-        {
+        {           
             var book = _dbContext.Books.FirstOrDefault(p => p.Id == Id);
             if (book is null)
             {
@@ -20,7 +20,6 @@ namespace WebAPI.Application.BookOperations.Commands.CommandHandler
             }
             _dbContext.Books.Remove(book);
             _dbContext.SaveChanges();
-
         }
     }
 }

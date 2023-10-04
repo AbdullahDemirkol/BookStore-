@@ -28,9 +28,10 @@ namespace WebAPI.Application.BookOperations.Commands.CommandHandler
                 throw new InvalidOperationException("Böyle bir yazar bulunamadı");
             }
 
-            book.GenreId = Model.GenreId != default ? Model.GenreId : book.GenreId;
-            book.PageCount = Model.PageCount != default ? Model.PageCount : book.PageCount;
             book.Title = Model.Title != default ? Model.Title : book.Title;
+            book.GenreId = Model.GenreId != default ? Model.GenreId : book.GenreId;
+            book.AuthorId = Model.AuthorId != default ? Model.AuthorId : book.AuthorId;
+            book.PageCount = Model.PageCount != default ? Model.PageCount : book.PageCount;
             _dbContext.SaveChanges();
         }
     }
