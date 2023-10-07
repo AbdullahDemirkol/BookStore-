@@ -9,6 +9,7 @@ namespace WebAPI.DataAccess
         DbSet<Author> Authors { get; set; }
         DbSet<Genre> Genres { get; set; }
         DbSet<Book> Books { get; set; }
+        DbSet<User> Users { get; set; }
 
     }
 }

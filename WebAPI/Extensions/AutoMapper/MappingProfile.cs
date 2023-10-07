@@ -5,6 +5,7 @@ using WebAPI.Application.BookOperations.Commands.RequestCommandModel;
 using WebAPI.Application.BookOperations.Queries.QueryViewModel;
 using WebAPI.Application.GenreOperations.Commands.RequestCommandModel;
 using WebAPI.Application.GenreOperations.Queries.QueryViewModel;
+using WebAPI.Application.UserOperations.Commands.RequestCommandModel;
 using WebAPI.Entity.Concrete;
 
 namespace WebAPI.Extensions.AutoMapper
@@ -20,6 +21,7 @@ namespace WebAPI.Extensions.AutoMapper
             CreateMap<CreateGenreModel, Genre>();
             CreateMap<Author, AuthorViewModel>().ForMember(dest=>dest.FullName,opt=>opt.MapFrom(src=>src.Name+" "+src.Surname));
             CreateMap<CreateAuthorModel, Author>();
+            CreateMap<CreateUserModel, User>().ForMember(dest=>dest.RefreshToken,opt=>opt.MapFrom(src=>""));
         }
     }
 }

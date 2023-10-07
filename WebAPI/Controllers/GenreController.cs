@@ -9,9 +9,11 @@ using WebAPI.Application.GenreOperations.Queries.QueryViewModel;
 using WebAPI.Application.GenreOperations.Queries.Validator;
 using WebAPI.DataAccess;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class GenreController : ControllerBase

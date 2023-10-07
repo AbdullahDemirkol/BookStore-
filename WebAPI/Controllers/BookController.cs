@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Application.BookOperations.Commands.CommandHandler;
 using WebAPI.Application.BookOperations.Commands.RequestCommandModel;
@@ -13,6 +14,7 @@ using WebAPI.DataAccess;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class BookController : ControllerBase

@@ -1,0 +1,33 @@
+Log Dosyası Oluşturuldu: 05.10.2023 05:36:04
+
+[TextFileLogger] - 05.10.2023 05:36:17 --  [Request] HTTP POST "/Users"
+[TextFileLogger] - 05.10.2023 05:38:50 --  [Request] HTTP POST "/Users"
+[TextFileLogger] - 05.10.2023 05:38:53 --  [Error] HTTP POST "/Users" - StatusCode: 500 InternalServerError. Error Message: Required properties '{'RefreshToken'}' are missing for the instance of entity type 'User'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the entity key value.. Time: 2,4281444ms.
+[TextFileLogger] - 05.10.2023 05:41:58 --  [Request] HTTP POST "/Users"
+[TextFileLogger] - 05.10.2023 05:42:18 --  [Error] HTTP POST "/Users" - StatusCode: 500 InternalServerError. Error Message: Required properties '{'RefreshToken'}' are missing for the instance of entity type 'User'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the entity key value.. Time: 19,427799ms.
+[TextFileLogger] - 05.10.2023 05:43:28 --  [Request] HTTP POST "/Users"
+[TextFileLogger] - 05.10.2023 05:43:29 --  [Response] HTTP POST "/Users" responded. StatusCode: 200 OK. Time: 0,1799517ms.
+[TextFileLogger] - 05.10.2023 06:22:00 --  [Request] HTTP POST "/Users/connect/token"
+[TextFileLogger] - 05.10.2023 06:22:01 --  [Error] HTTP POST "/Users/connect/token" - StatusCode: 500 InternalServerError. Error Message: Kullanıcı Adı yada Şifre Hatalı!. Time: 0,3488595ms.
+[TextFileLogger] - 05.10.2023 06:22:05 --  [Request] HTTP POST "/Users"
+[TextFileLogger] - 05.10.2023 06:22:05 --  [Response] HTTP POST "/Users" responded. StatusCode: 200 OK. Time: 0,1097599ms.
+[TextFileLogger] - 05.10.2023 06:22:09 --  [Request] HTTP POST "/Users/connect/token"
+[TextFileLogger] - 05.10.2023 06:22:09 --  [Response] HTTP POST "/Users/connect/token" responded. StatusCode: 200 OK. Time: 0,1038191ms.
+[TextFileLogger] - 05.10.2023 06:23:17 --  [Request] HTTP POST "/Users"
+[TextFileLogger] - 05.10.2023 06:23:17 --  [Response] HTTP POST "/Users" responded. StatusCode: 200 OK. Time: 0,2534393ms.
+[TextFileLogger] - 05.10.2023 06:23:19 --  [Request] HTTP POST "/Users/connect/token"
+[TextFileLogger] - 05.10.2023 06:23:19 --  [Response] HTTP POST "/Users/connect/token" responded. StatusCode: 200 OK. Time: 0,2739845ms.
+[TextFileLogger] - 05.10.2023 06:24:41 --  [Request] HTTP POST "/Users"
+[TextFileLogger] - 05.10.2023 06:24:42 --  [Response] HTTP POST "/Users" responded. StatusCode: 200 OK. Time: 0,3950203ms.
+[TextFileLogger] - 05.10.2023 06:24:44 --  [Request] HTTP POST "/Users/connect/token"
+[TextFileLogger] - 05.10.2023 06:24:44 --  [Response] HTTP POST "/Users/connect/token" responded. StatusCode: 200 OK. Time: 0,2533303ms.
+[TextFileLogger] - 05.10.2023 06:25:12 --  [Request] HTTP GET "/Books"
+[TextFileLogger] - 05.10.2023 06:25:12 --  [Response] HTTP GET "/Books" responded. StatusCode: 200 OK. Time: 0,0712527ms.
+[TextFileLogger] - 05.10.2023 06:37:23 --  [Request] HTTP POST "/Users"
+[TextFileLogger] - 05.10.2023 06:37:23 --  [Response] HTTP POST "/Users" responded. StatusCode: 200 OK. Time: 0,3243916ms.
+[TextFileLogger] - 05.10.2023 06:38:29 --  [Request] HTTP POST "/Users/connect/token"
+[TextFileLogger] - 05.10.2023 06:38:29 --  [Response] HTTP POST "/Users/connect/token" responded. StatusCode: 200 OK. Time: 0,1742895ms.
+[TextFileLogger] - 05.10.2023 06:38:36 --  [Request] HTTP GET "/Users/refresh/token"
+[TextFileLogger] - 05.10.2023 06:38:36 --  [Response] HTTP GET "/Users/refresh/token" responded. StatusCode: 400 BadRequest. Time: 0,0276348ms.
+[TextFileLogger] - 05.10.2023 06:39:00 --  [Request] HTTP GET "/Users/refresh/token"
+[TextFileLogger] - 05.10.2023 06:39:00 --  [Response] HTTP GET "/Users/refresh/token" responded. StatusCode: 200 OK. Time: 0,0329717ms.
